@@ -1,0 +1,30 @@
+doctype 5
+html
+	head
+		title= title
+		script(src='http://code.jquery.com/jquery-2.0.2.min.js')
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='/stylesheets/select2-min.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		if user
+			div.navbar.navbar-inverse
+				a.navbar-brand(href='/') WebServices
+				ul.nav.navbar-nav
+					li
+						a(href='/') Home
+					li
+						a(href='/table') Personel
+				ul.pull-right.nav.navbar-nav
+					li
+						a(href='/logout') Sign Out
+		else
+			div.navbar.navbar-inverse
+				a.navbar-brand(href='/') WebServices
+				ul.nav.navbar-nav
+					li
+						a(href='/') Home
+				ul.nav.navbar-nav.pull-right
+					li
+						a(href='/login') Sign In
+		block content

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	each s in scripts
+		script(src=s)
+
+	form#login.form-horizontal.pull-left.col.col-lg-3(method="POST", action="/login")
+		div.row
+			label.col.col-lg-2.control-label(for='userName') Username
+			div.col.col-lg-10
+				input#userName(type='text', placeholder='Username', name="username")
+		div.row
+			label.col.col-lg-2.control-label(for='') Password
+			div.col.col-lg-10
+				input#inputPassword(type='password', placeholder='Password', name="password")
+		div.row
+			div.col.col-lg-10.col-offset-2
+				button.btn.btn-default(type='submit') Sign in

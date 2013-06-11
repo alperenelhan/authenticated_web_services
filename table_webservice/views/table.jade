@@ -1,0 +1,67 @@
+extends layout
+
+block content
+	each s in scripts
+		script(src=s)
+	div.row
+		div.panel.table-panel.col.col-lg-6
+			div.panel-heading Table Info
+			if info
+				table.table.table-bordered.table-hover.table-striped
+					thead
+						tr
+							td Record count
+							td Average Age
+							td Maximum Age
+							td Minimum Age
+					tbody
+						tr
+							td#count #{info.count}
+							td#avg #{info.avg}
+							td#max #{info.max}
+							td#min #{info.min}
+				button#getinfo.btn.btn-info(type="submit") Refresh
+	div.row
+		div.panel.search-panel.col.col-lg-6
+			div.panel-heading Search
+			div.row
+				div.col.col-lg-2
+				input(type='text', placeholder="Query Text").col.col-lg-6#field1
+				div.col.col-lg-4
+					select#field1-select
+						each option in fields
+							option #{option}
+			div.row
+				div.col.col-lg-2
+					select#field1-field2.field
+						option(value="and") AND
+						option(value="or") OR
+				input(type='text', placeholder="Query Text").col.col-lg-6#field2
+				div.col.col-lg-4
+					select#field2-select
+						option(selected="Select a Field (Optional)", value="") Select a Field (Optional)
+						each option in fields
+							option #{option}
+			div.row
+				div.col.col-lg-2
+					select#field2-field3.field
+						option(value="and") AND
+						option(value="or") OR
+				input(type='text', placeholder="Query Text").col.col-lg-6#field3
+				div.col.col-lg-4
+					select#field3-select
+						option(selected="Select a Field (Optional)", value="") Select a Field (Optional)
+						each option in fields
+							option #{option}
+			div.col.col-lg-2
+			button.btn.btn-info#search(type="submit") Search
+	div#people
+		if fields
+			table.table.table-bordered.table-hover.table-striped
+				thead
+					tr
+						td Edit
+						each field in fields
+							td= field
+						td Delete
+				tbody#results
